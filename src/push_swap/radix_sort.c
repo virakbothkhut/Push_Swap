@@ -1,7 +1,6 @@
 #include "push_swap.h"
 #include "validation.h"
 
-// Function to get the maximum value in stack A
 int	get_max(t_stack *stack)
 {
 	int		max;
@@ -18,7 +17,6 @@ int	get_max(t_stack *stack)
 	return (max);
 }
 
-// Function to calculate the number of bits required to represent the max value
 int	get_num_bits(int max)
 {
 	int	bits;
@@ -56,6 +54,7 @@ void	radix_sort(t_stack *stack_a, t_stack *stack_b)
 			{
 				pb(&stack_a->top, &stack_b->top);
 				printf("After pb (push) pass %d:\n", i);
+				printf("Current stack: ");
 				print_stack(stack_a->top);
 				print_stack(stack_b->top);
 			}

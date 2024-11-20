@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validation.h                                       :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vkhut <vkhut@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/20 20:22:50 by vkhut             #+#    #+#             */
-/*   Updated: 2024/11/20 21:53:35 by vkhut            ###   ########.fr       */
+/*   Created: 2024/11/20 21:22:42 by vkhut             #+#    #+#             */
+/*   Updated: 2024/11/20 21:44:17 by vkhut            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VALIDATION_H
-# define VALIDATION_H
+#include "libft.h"
 
-# include "push_swap.h"
-
-void	append_stack(t_stack *stack, int *arr, int size);
-int		duplicates(t_stack *stack);
-int	    handle_errors(int ac, char **av, t_stack *stack);
-void	show_error(void);
-
-#endif
+int ft_strcmp(char *s1, char *s2)
+{
+    int i;
+    i = 0;
+    while (s1[i] == s2[i] && s1[i] != '\0' && s2[i] != '\0')
+        i++;
+    return (s1[i] - s2[i]);
+}
