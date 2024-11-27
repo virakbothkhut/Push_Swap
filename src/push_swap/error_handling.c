@@ -6,7 +6,7 @@
 /*   By: vkhut <vkhut@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 20:22:59 by vkhut             #+#    #+#             */
-/*   Updated: 2024/11/20 21:57:21 by vkhut            ###   ########.fr       */
+/*   Updated: 2024/11/27 21:31:45 by vkhut            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,16 +75,17 @@ int handle_errors(int ac, char **av, t_stack *stack)
 	arr = allocate_memory(ac - 1);
 	if (!arr)
 		show_error();
-	return (1);
+
 	convert_t_integer(ac, av, arr);
 	append_stack(stack, arr, ac - 1);
+
 	if (duplicates(stack))
 	{
-		free(arr);
-		free_stack(stack);
+		free(arr);		   // Free allocated memory on error
+		free_stack(stack); // Free stack memory
 		show_error();
 		return (1);
 	}
-	free(arr);
+	free(arr); // Free allocated memory when done
 	return (0);
 }

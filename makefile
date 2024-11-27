@@ -37,9 +37,9 @@ OBJS = $(OBJ_DIR)push_swap/push_swap.o \
        $(OBJ_DIR)push_swap/radix_sort.o \
        $(OBJ_DIR)push_swap/validation.o \
        $(OBJ_DIR)push_swap/error_handling.o \
-       $(OBJ_DIR)getNextLine/get_next_line.o \
-	   $(OBJ_DIR)getNextLine/get_next_line_utils.o \
-       $(OBJ_DIR)utils/handle_input.o \
+       $(GNL_DIR)get_next_line.o \
+	   $(GNL_DIR)get_next_line_utils.o \
+       $(SRC_DIR)utils/handle_input.o \
        $(OBJ_DIR)push_stack/push_stack.o 
 
 
@@ -73,10 +73,10 @@ $(OBJ_DIR)utils/%.o: $(SRC_DIR)utils/%.c | $(OBJ_DIR)utils/
 $(OBJ_DIR)push_stack/%.o: $(SRC_DIR)push_stack/%.c | $(OBJ_DIR)push_stack/
 	@$(CC) $(CFLAGS) -c $< -o $@
 
-$(OBJ_DIR)get_next_line.o: $(GNL_DIR)get_next_line.c | $(OBJ_DIR)
+$(GNL_DIR)get_next_line.o: $(GNL_DIR)get_next_line.c | $(GNL_DIR)
 	@$(CC) $(CFLAGS) -c $< -o $@
 
-$(OBJ_DIR)getNextLine/get_next_line_utils.o: $(GNL_DIR)get_next_line_utils.c | $(OBJ_DIR)
+$(GNL_DIR)get_next_line_utils.o: $(GNL_DIR)get_next_line_utils.c | $(GNL_DIR)
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 ifeq ($(OS),Linux)

@@ -6,7 +6,7 @@
 /*   By: vkhut <vkhut@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 20:22:44 by vkhut             #+#    #+#             */
-/*   Updated: 2024/11/20 21:54:26 by vkhut            ###   ########.fr       */
+/*   Updated: 2024/11/27 20:15:37 by vkhut            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,18 @@ typedef struct s_stack
 	int				size;
 }					t_stack;
 
-void				ra(t_node **stack);
-void				pb(t_node **stack_a, t_node **stack_b);
-void				pa(t_node **stack_a, t_node **stack_b);
+
+void 				ra(t_node **stack);
+void 				rb(t_node **stack);
+void 				pb(t_node **stack_a, t_node **stack_b);
+void 				pa(t_node **stack_a, t_node **stack_b);
+void 				sa(t_node **stack);
+void 				sb(t_node **stack);
+void 				ss(t_node **stack_a, t_node **stack_b);
+void 				rr(t_node **stack_a, t_node **stack_b);
+void 				rrr(t_node **stack_a, t_node **stack_b);
+void 				rrb(t_node **stack);
+void 				rra(t_node **stack);
 t_node				*new_node(int value);
 void				push_to_stack(t_stack *stack, t_node *node);
 int					valid_integer(char *str);
