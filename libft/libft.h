@@ -19,6 +19,7 @@
 # include <string.h>
 # include <unistd.h>
 # include <stdint.h>
+# include <limits.h>
 
 int		ft_isalnum(int c);
 int		ft_isalpha(int c);
@@ -40,7 +41,7 @@ void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 void	ft_putstr_fd(char *s, int fd);
 
-int		ft_atoi(char const *str);
+long		ft_atoi(char const *str);
 char	*ft_itoa(int n);
 char	**ft_split(char const *s, char c);
 char	*ft_strchr(char const *str, int c);

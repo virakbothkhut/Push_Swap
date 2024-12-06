@@ -12,45 +12,31 @@
 
 #include "libft.h"
 
-static int	check_space(int c)
-{
-	if ((c > 8 && c < 14) || (c == 32))
-		return (1);
-	return (0);
-}
+#include <limits.h>
 
-static int	check_digit(int c)
+long ft_atoi(const char *str)
 {
-	if (c > 47 && c < 58)
-		return (1);
-	return (0);
-}
+	long a;
+	long b;
+	long i;
 
-int	ft_atoi(char const *str)
-{
-	long long int	n;
-	long long int	check;
-	int				sign;
-
-	n = 0;
-	sign = 1;
-	while (*str && check_space(*str))
-		str++;
-	if (*str == 45 || *str == 43)
+	a = 0;
+	b = 1;
+	i = 0;
+	while (str[i] == ' ' || str[i] == '\n' || str[i] == '\t' || str[i] == '\v' || str[i] == '\f' || str[i] == '\r')
+		i++;
+	if (str[i] == '-' || str[i] == '+')
 	{
-		if (*str == 45)
-			sign *= -1;
-		str++;
+		if (str[i] == '-')
+		{
+			b = b * -1;
+		}
+		i++;
 	}
-	while (*str && check_digit(*str))
+	while (str[i] >= '0' && str[i] <= '9')
 	{
-		check = n;
-		n = n * 10 + sign * (*str - 48);
-		if (n > check && sign < 0)
-			return (0);
-		if (n < check && sign > 0)
-			return (-1);
-		str++;
+		a = a * 10 + str[i] - '0';
+		i++;
 	}
-	return (n);
+	return (a * b);
 }

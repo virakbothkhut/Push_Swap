@@ -1,99 +1,64 @@
-NAME                = push_swap
+NAME = push_swap
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror
+LIBFT = ./libft/libft.a
+INCLUDE = -I./include
+SRC_DIR = ./src
+OBJ_DIR = ./obj
 
-LIBFT               = ./libft/libft.a
-INC                 = include/
-SRC_DIR             = src/
-OBJ_DIR             = obj/
-GNL_DIR    			= getNextLine/
+SRC = $(SRC_DIR)/push_swap.c $(SRC_DIR)/input_checker.c $(SRC_DIR)/r_rotate.c \
+      $(SRC_DIR)/set_up.c $(SRC_DIR)/stack.c $(SRC_DIR)/algorithm.c 
 
-CC                  = gcc
-CFLAGS              = -Wall -Werror -Wextra -I$(INC) -I$(GNL_DIR)
-RM                  = rm -f
+OBJ = $(addprefix $(OBJ_DIR)/, $(notdir $(SRC:.c=.o)))
 
-
-all: $(LIBFT) $(NAME)
-	@echo "Done!"
-	@echo "To test the program, run 'make test' or 'make test size=10'"
-	@echo "for example for testing 10 random numbers"
-	@echo "./push_swap 1 2 3 4 5 6 7 8 9 10" 
-
-PUSH_SWAP_SRC       = $(SRC_DIR)push_swap/push_swap.c \
-                      $(SRC_DIR)push_swap/radix_sort.c \
-                      $(SRC_DIR)push_swap/validation.c \
-                      $(SRC_DIR)push_swap/error_handling.c
-
-UTILS_SRC           = $(GNL_DIR)get_next_line.c \
-					  $(GNL_DIR)get_next_line_utils.c \
-					  $(SRC_DIR)utils/handle_input.c 
-                      
-
-PUSH_STACK_SRC      = $(SRC_DIR)push_stack/push_stack.c
-
-
-SRCS                = $(PUSH_SWAP_SRC) $(UTILS_SRC) $(PUSH_STACK_SRC)
+BLACK   := \033[30m
+RED     := \033[31m
+GREEN   := \033[32m
+YELLOW  := \033[33m
+BLUE    := \033[96m
+MAGENTA := \033[38;5;206m
+CYAN    := \033[36m
+WHITE   := \033[37m
+RESET   := \033[0m
+BOLD    := \033[1m
+DIM     := \033[2m
+ITALIC  := \033[3m
+UNDER   := \033[4m
+BLINK   := \033[5m
+REVERSE := \033[7m
+HIDDEN  := \033[8m
+PINK    := \033[35m
 
 
-OBJS = $(OBJ_DIR)push_swap/push_swap.o \
-       $(OBJ_DIR)push_swap/radix_sort.o \
-       $(OBJ_DIR)push_swap/validation.o \
-       $(OBJ_DIR)push_swap/error_handling.o \
-       $(GNL_DIR)get_next_line.o \
-	   $(GNL_DIR)get_next_line_utils.o \
-       $(SRC_DIR)utils/handle_input.o \
-       $(OBJ_DIR)push_stack/push_stack.o 
+all: $(NAME)
+
+$(NAME): $(LIBFT) $(OBJ)
+	@echo "Compiled with $(GREEN)$(BOLD)$(CFLAGS)$(RESET)"
+	@$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(LIBFT)
+	@echo "$(PINK)$(BOLD)----------------------------------------"
+	@echo "     $(NAME) = IT IS READY TO START!"
+	@echo "---------------LET'S GO!!!-------------------------$(RESET)"
 
 
-start:
-					@make all
 
 $(LIBFT):
-					@make -C ./libft
+	@$(MAKE) -C ./libft
 
-$(NAME):            $(OBJS) $(LIBFT)
-					@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
-					@echo "Executable $(NAME) created."
-
-
-$(OBJ_DIR):
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(OBJ_DIR)
-
-
-$(OBJ_DIR)push_swap/:
-	@mkdir -p $(OBJ_DIR)push_swap
-
-$(OBJ_DIR)push_stack/:
-	@mkdir -p $(OBJ_DIR)push_stack
-
-$(OBJ_DIR)push_swap/%.o: $(SRC_DIR)push_swap/%.c | $(OBJ_DIR)push_swap/
-	@$(CC) $(CFLAGS) -c $< -o $@
-
-$(OBJ_DIR)utils/%.o: $(SRC_DIR)utils/%.c | $(OBJ_DIR)utils/
-	@$(CC) $(CFLAGS) -c $< -o $@
-
-$(OBJ_DIR)push_stack/%.o: $(SRC_DIR)push_stack/%.c | $(OBJ_DIR)push_stack/
-	@$(CC) $(CFLAGS) -c $< -o $@
-
-$(GNL_DIR)get_next_line.o: $(GNL_DIR)get_next_line.c | $(GNL_DIR)
-	@$(CC) $(CFLAGS) -c $< -o $@
-
-$(GNL_DIR)get_next_line_utils.o: $(GNL_DIR)get_next_line_utils.c | $(GNL_DIR)
-	@$(CC) $(CFLAGS) -c $< -o $@
-
-ifeq ($(OS),Linux)
-CHECKER = valgrind ./push_swap $(ARG) | ./checker_linux $(ARG)
-else
-CHECKER = ./push_swap $(ARG) | ./checker_Mac $(ARG)
-endif
+	@echo "Compiled ✅ $(PINK) $(BOLD) $^ $(RESET)"
+	@$(CC) $(CFLAGS) $(INCLUDE) -c -o $@ $^
 
 clean:
-					@$(RM) -r $(OBJ_DIR)
-					@make clean -C ./libft
+	@$(MAKE) clean -C ./libft
+	@rm -rf $(OBJ_DIR)
 
-fclean:             clean
-					@$(RM) $(NAME)
-					@make fclean -C ./libft
+fclean: clean
+	@$(MAKE) fclean -C ./libft
+	@rm -f $(NAME)
+	@echo "$(BLUE) $(BOLD)$(NAME) $(RESET) Cleansed ✅"
 
 
-re:                 fclean all
+re: fclean all
 
-.PHONY:             start all clean fclean
+.PHONY: all clean fclean re
