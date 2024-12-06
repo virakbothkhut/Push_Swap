@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   stack.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vkhut <vkhut@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/06 15:28:08 by vkhut             #+#    #+#             */
+/*   Updated: 2024/12/06 15:28:09 by vkhut            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void push_b(t_stack **stack_a, t_stack **stack_b)
@@ -28,9 +40,9 @@ void push_a(t_stack **stack_a, t_stack **stack_b)
     *stack_a = tmp;
     write(1, "pa\n", 3);
 
-    printf("Operation: push_a\n");
-    print_stack(*stack_a);
-    print_stack(*stack_b);
+    // printf("Operation: push_a\n");
+    // print_stack(*stack_a);
+    // print_stack(*stack_b);
 }
 
 void rotate_a(t_stack **stack_a)

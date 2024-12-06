@@ -6,17 +6,18 @@
 /*   By: vkhut <vkhut@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 21:22:42 by vkhut             #+#    #+#             */
-/*   Updated: 2024/11/20 21:44:17 by vkhut            ###   ########.fr       */
+/*   Updated: 2024/12/06 17:24:48 by vkhut            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_strcmp(char *s1, char *s2)
+int	ft_strcmp(char *s1, char *s2)
 {
-    int i;
-    i = 0;
-    while (s1[i] == s2[i] && s1[i] != '\0' && s2[i] != '\0')
-        i++;
-    return (s1[i] - s2[i]);
+	int	i;
+	i = 0;
+
+	while (s1[i] == s2[i] && s1[i] != '\0' && s2[i] != '\0')
+		i++;
+	return (s1[i] - s2[i]);
 }

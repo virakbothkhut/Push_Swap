@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   set_up.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vkhut <vkhut@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/06 15:28:03 by vkhut             #+#    #+#             */
+/*   Updated: 2024/12/06 15:28:03 by vkhut            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void free_split_string(char **split_string)
@@ -71,7 +83,7 @@ void index_stack(t_stack *head, int l_size)
         if (largest)
             largest->index = l_size;
     }
-    print_stack(head);
+    // print_stack(head);
 }
 
 int get_node_count(t_stack *head)
@@ -140,12 +152,12 @@ int find_smallest(t_stack *head)
     return smallest;
 }
 
-void print_stack(t_stack *head)
-{
-    while (head)
-    {
-        printf("%d ", head->value);
-        head = head->next;
-    }
-    printf("\n");
-}
+// void print_stack(t_stack *head)
+// {
+//     while (head)
+//     {
+//         printf("%d ", head->value);
+//         head = head->next;
+//     }
+//     printf("\n");
+// }

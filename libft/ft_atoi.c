@@ -3,40 +3,54 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: both <both@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: vkhut <vkhut@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 14:54:22 by vkhut             #+#    #+#             */
-/*   Updated: 2024/11/12 07:08:24 by both             ###   ########.fr       */
+/*   Updated: 2023/12/18 21:08:58 by vkhut            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-#include <limits.h>
-
-long ft_atoi(const char *str)
+static int	check_space(int c)
 {
-	long a;
-	long b;
-	long i;
+	if ((c > 8 && c < 14) || (c == 32))
+		return (1);
+	return (0);
+}
 
-	a = 0;
-	b = 1;
-	i = 0;
-	while (str[i] == ' ' || str[i] == '\n' || str[i] == '\t' || str[i] == '\v' || str[i] == '\f' || str[i] == '\r')
-		i++;
-	if (str[i] == '-' || str[i] == '+')
+static int	check_digit(int c)
+{
+	if (c > 47 && c < 58)
+		return (1);
+	return (0);
+}
+
+int	ft_atoi(char const *str)
+{
+	long long int	n;
+	long long int	check;
+	int				sign;
+
+	n = 0;
+	sign = 1;
+	while (*str && check_space(*str))
+		str++;
+	if (*str == 45 || *str == 43)
 	{
-		if (str[i] == '-')
-		{
-			b = b * -1;
-		}
-		i++;
+		if (*str == 45)
+			sign *= -1;
+		str++;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
+	while (*str && check_digit(*str))
 	{
-		a = a * 10 + str[i] - '0';
-		i++;
+		check = n;
+		n = n * 10 + sign * (*str - 48);
+		if (n > check && sign < 0)
+			return (0);
+		if (n < check && sign > 0)
+			return (-1);
+		str++;
 	}
-	return (a * b);
+	return (n);
 }

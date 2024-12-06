@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   algorithm.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vkhut <vkhut@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/06 15:27:41 by vkhut             #+#    #+#             */
+/*   Updated: 2024/12/06 16:46:26 by vkhut            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void radix_sort(t_stack **stack_a, t_stack **stack_b)
@@ -8,9 +20,6 @@ void radix_sort(t_stack **stack_a, t_stack **stack_b)
     while (i < max_bits)
     {
         bucket_sort(stack_a, stack_b, i);
-        printf("After bucket_sort (bit_position %d):\n", i);
-        print_stack(*stack_a);
-        print_stack(*stack_b);
         i++;
     }
 }
@@ -37,22 +46,22 @@ int get_max_bits(t_stack *stack)
 
 void bucket_sort(t_stack **stack_a, t_stack **stack_b, int bit_position)
 {
-    int volume = get_node_count(*stack_a);
+    int volume;
+    volume = get_node_count(*stack_a);
     int i = 0;
 
     while (i < volume)
     {
         if (((*stack_a)->value >> bit_position) & 1)
         {
-            push_b(stack_a, stack_b);
+            rotate_a(stack_a);
         }
         else
         {
-            rotate_a(stack_a);
+            push_b(stack_a, stack_b);
         }
         i++;
     }
-
     while (*stack_b)
     {
         push_a(stack_a, stack_b);
@@ -66,8 +75,6 @@ void sort_three(t_stack **head)
     if ((*head)->value == biggest)
     {
         rotate_a(head);
-        printf("After rotate_a:\n");
-        print_stack(*head);
     }
     else if ((*head)->next->value == biggest)
     {
@@ -77,8 +84,6 @@ void sort_three(t_stack **head)
     if ((*head)->value > (*head)->next->value)
     {
         swap_a(head);
-        printf("After swap_a:\n");
-        print_stack(*head);
     }
 }
 

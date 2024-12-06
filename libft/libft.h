@@ -6,7 +6,7 @@
 /*   By: vkhut <vkhut@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 15:51:55 by vkhut             #+#    #+#             */
-/*   Updated: 2024/11/20 21:22:12 by vkhut            ###   ########.fr       */
+/*   Updated: 2024/12/06 17:20:13 by vkhut            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 # include <string.h>
 # include <unistd.h>
 # include <stdint.h>
-# include <limits.h>
 
 int		ft_isalnum(int c);
 int		ft_isalpha(int c);
@@ -41,7 +40,7 @@ void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 void	ft_putstr_fd(char *s, int fd);
 
-long		ft_atoi(char const *str);
+int		ft_atoi(char const *str);
 char	*ft_itoa(int n);
 char	**ft_split(char const *s, char c);
 char	*ft_strchr(char const *str, int c);
