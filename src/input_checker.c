@@ -49,50 +49,58 @@ int	is_valid_num(const char *str)
 
 void	input_checker(int ac, char **av)
 {
-	int	i;
+	int		i;
+	char	**pointer;
 
 	i = 0;
-	if	(ac == 2)
+	if (ac == 2)
 	{
-		char	**pointer;
 		pointer = ft_split(av[1], ' ');
-		while (pointer[i])
-		{
-			if (!is_valid_num(pointer[i]))
-			{
-				free(pointer);
-				write(1, "Error\n", 6);
-				exit(1);
-			}
-			long num;
-			num = ft_atoi(pointer[i]);
-			if	(num < (long)INT_MIN || num > (long)INT_MAX || check_duplicate(pointer))
-			{
-				free(pointer);
-				write(1, "Error\n", 6);
-				exit(1);
-            }
-			i++;
-		}
-		free(pointer);
-    }
+		split_ac(av[1], pointer);
+	}
 	else
-    {
-		while (av[i + 1])
-        {
-			if (!is_valid_num(av[i + 1]))
-			{
-				write(1, "Error\n", 6);
+	{
+		while (av[i +1])
+		{
+			if (!validate_ac(av[i + 1], av))
 				exit(1);
-            }
-			long num;
-			num = ft_atoi(av[i + 1]);
-			if (num < (long)INT_MIN || num > (long)INT_MAX || check_duplicate(av))
-			{
-				write(1, "Error\n", 6);
-				exit(1);
-			}
 			i++;
 		}
 	}
+}
+
+void	split_ac(char *ac, char **pointer)
+{
+	int	i;
+
+	i = 0;
+	(void)ac;
+	while (pointer[i])
+	{
+		if (!validate_ac(pointer[i], pointer))
+		{
+			free(pointer);
+			exit(1);
+		}
+		i++;
+	}
+	free(pointer);
+}
+
+int	validate_ac(char *ac, char **pointer)
+{
+	long	num;
+
+	if (!is_valid_num(ac))
+	{
+		write(1, "Error\n", 6);
+		return (0);
+	}
+	num = ft_atoi (ac);
+	if (num < (long)INT_MIN || num > (long)INT_MAX || check_duplicate(pointer))
+	{
+		write(1, "Error\n", 6);
+		return (0);
+	}
+	return (1);
 }

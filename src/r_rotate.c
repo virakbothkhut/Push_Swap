@@ -30,3 +30,38 @@ void	r_rotate_a(t_stack **stack_a)
 	*stack_a = last;
 	write(1, "rra\n", 4);
 }
+
+int	cal_rotates(t_stack *stack, int smallest)
+{
+	int	i;
+
+	i = 0;
+	if (stack == NULL)
+		return (-1);
+	while (stack)
+	{
+		if (stack->value == smallest)
+			break ;
+		stack = stack->next;
+		i++;
+	}
+	return (i);
+}
+
+void	r_or_rr(t_stack **stack_a, int rotate, int volume)
+{
+	if (rotate <= volume / 2)
+	{
+		while ((*stack_a)->value != find_smallest(*stack_a))
+		{
+			rotate_a(stack_a);
+		}
+	}
+	else
+	{
+		while ((*stack_a)->value != find_smallest(*stack_a))
+		{
+			r_rotate_a(stack_a);
+		}
+	}
+}

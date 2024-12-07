@@ -16,20 +16,19 @@ int	main(int ac, char **av)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
+	int		volume;
+
 	stack_a = create_stack(ac, av);
 	stack_b = NULL;
-	int	volume;
-	
-	volume = get_node_count(stack_a);
 	if (ac < 2)
 		return (0);
-	input_checker(ac, av);
-	
+	input_checker (ac, av);
 	if (is_sorted(stack_a))
 	{
 		free_stack(&stack_a);
 		return (0);
 	}
+	volume = get_node_count(stack_a);
 	if (volume <= 3)
 		sort_three(&stack_a);
 	else if (volume <= 5)
