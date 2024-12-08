@@ -11,6 +11,16 @@ SRC = $(SRC_DIR)/push_swap.c $(SRC_DIR)/input_checker.c $(SRC_DIR)/r_rotate.c \
 
 OBJ = $(addprefix $(OBJ_DIR)/, $(notdir $(SRC:.c=.o)))
 
+
+BOLD    := \033[1m
+DIM     := \033[2m
+ITALIC  := \033[3m
+UNDER   := \033[4m
+BLINK   := \033[5m
+REVERSE := \033[7m
+HIDDEN  := \033[8m
+PINK    := \033[35m
+PURPLE 	:= \033[35m 
 BLACK   := \033[30m
 RED     := \033[31m
 GREEN   := \033[32m
@@ -20,33 +30,23 @@ MAGENTA := \033[38;5;206m
 CYAN    := \033[36m
 WHITE   := \033[37m
 RESET   := \033[0m
-BOLD    := \033[1m
-DIM     := \033[2m
-ITALIC  := \033[3m
-UNDER   := \033[4m
-BLINK   := \033[5m
-REVERSE := \033[7m
-HIDDEN  := \033[8m
-PINK    := \033[35m
 
 
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(OBJ)
-	@echo "Compiled with $(GREEN)$(BOLD)$(CFLAGS)$(RESET)"
+	@echo "Compiled with $(MAGENTA)$(BLINK)$(BOLD)$(CFLAGS)$(RESET)"
 	@$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(LIBFT)
-	@echo "$(PINK)$(BOLD)----------------------------------------"
-	@echo "     $(NAME) = IT IS READY TO START!"
-	@echo "---------------LET'S GO!!!-------------------------$(RESET)"
-
-
+	@echo "$(ORANGE)$(BOLD)🔥🔥🔥 Ready for a sexy build process! 🔥🔥🔥$(RESET)"
+	@echo "$(CYAN)$(BOLD)$(BLINK)😃😃😃 MERRY CHRISTMAS 🎁🎁🎁🎁🎁$(RESET)"
 
 $(LIBFT):
 	@$(MAKE) -C ./libft
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(OBJ_DIR)
-	@echo "Compiled ✅ $(PINK) $(BOLD) $^ $(RESET)"
+	@echo "$(YELLOW)$(BOLD)Compiled ✅ >>>>>>>>> $(CYAN)$(UNDER)$^$(RESET)"
+	@echo "$(MAGENTA)$(BLINK) LET's GO 🎅🎅🎄🎄🎄$(RESET)"
 	@$(CC) $(CFLAGS) $(INCLUDE) -c -o $@ $^
 
 clean:
@@ -56,7 +56,7 @@ clean:
 fclean: clean
 	@$(MAKE) fclean -C ./libft
 	@rm -f $(NAME)
-	@echo "$(BLUE) $(BOLD)$(NAME) $(RESET) Cleansed ✅"
+	@echo "$(BLUE) $(BOLD)$(NAME) $(RESET) Cleaned ✅"
 
 
 re: fclean all

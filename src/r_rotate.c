@@ -48,18 +48,23 @@ int	cal_rotates(t_stack *stack, int smallest)
 	return (i);
 }
 
-void	r_or_rr(t_stack **stack_a, int rotate, int volume)
+void	r_or_rr(t_stack **stack_a, int volume)
 {
-	if (rotate <= volume / 2)
+	int	smallest;
+	int	smallpos;
+
+	smallest = find_smallest(*stack_a);
+	smallpos = cal_rotates(*stack_a, smallest);
+	if (smallpos <= volume / 2)
 	{
-		while ((*stack_a)->value != find_smallest(*stack_a))
+		while ((*stack_a)->value != smallest)
 		{
 			rotate_a(stack_a);
 		}
 	}
 	else
 	{
-		while ((*stack_a)->value != find_smallest(*stack_a))
+		while ((*stack_a)->value != smallest)
 		{
 			r_rotate_a(stack_a);
 		}

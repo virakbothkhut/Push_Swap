@@ -43,19 +43,19 @@ void	free_split_string(char **split_string)
 int	find_biggest(t_stack *head)
 {
 	int		biggest;
-	t_stack	*tmp;
+	t_stack	*pointer;
 
 	if (!head)
 		return (-1);
-	tmp = head;
-	biggest = tmp->value;
-	while (tmp)
+	pointer = head;
+	biggest = pointer->value;
+	while (pointer)
 	{
-		if (tmp->value > biggest)
+		if (pointer->value > biggest)
 		{
-			biggest = tmp->value;
+			biggest = pointer->value;
 		}
-		tmp = tmp->next;
+		pointer = pointer->next;
 	}
 	return (biggest);
 }

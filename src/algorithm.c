@@ -95,15 +95,11 @@ void	sort_three(t_stack **head)
 void	sort_five(t_stack **stack_a, t_stack **stack_b)
 {
 	int		volume;
-	int		smallest;
-	int		rotations;
 
 	volume = get_node_count(*stack_a);
 	while (volume > 3)
 	{
-		smallest = find_smallest(*stack_a);
-		rotations = cal_rotates(*stack_a, smallest);
-		r_or_rr(stack_a, rotations, volume);
+		r_or_rr(stack_a, volume);
 		push_b(stack_a, stack_b);
 		volume--;
 	}

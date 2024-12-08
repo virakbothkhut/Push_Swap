@@ -96,8 +96,13 @@ int	validate_ac(char *ac, char **pointer)
 		write(1, "Error\n", 6);
 		return (0);
 	}
-	num = ft_atoi (ac);
-	if (num < (long)INT_MIN || num > (long)INT_MAX || check_duplicate(pointer))
+	num = ft_atoi(ac);
+	if (num == INT_MAX || num == INT_MIN)
+	{
+		write(1, "Error\n", 6);
+		return (0);
+	}
+	if (check_duplicate(pointer))
 	{
 		write(1, "Error\n", 6);
 		return (0);

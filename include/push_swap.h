@@ -52,7 +52,6 @@ void		split_ac(char *ac, char **pointer);
 int			validate_ac(char *ac, char **pointer);
 void		add_to_stack(t_stack **stack, t_stack *new_node);
 int			cal_rotates(t_stack *stack, int small);
-void		r_or_rr(t_stack **stack_a, int rotate, int volume);
 t_stack		*new_node(int value);
-
+void		r_or_rr(t_stack **stack_a, int volume);
 #endif
