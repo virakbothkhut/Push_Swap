@@ -6,7 +6,7 @@
 /*   By: vkhut <vkhut@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 15:28:03 by vkhut             #+#    #+#             */
-/*   Updated: 2024/12/06 15:28:03 by vkhut            ###   ########.fr       */
+/*   Updated: 2024/12/09 12:43:10 by vkhut            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_stack	*create_stack(int ac, char **av)
 	i = 1;
 	while (i < ac)
 	{
-		node = new_node(atoi(av[i]));
+		node = new_node(ft_atoi(av[i]));
 		if (!node)
 		{
 			return (NULL);

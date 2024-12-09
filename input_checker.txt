@@ -4,6 +4,15 @@
 ./push_swap 1 2 3 4 5 x
 ./push_swap 1 2 3 4 5  ra   
 
+valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./push_swap
+#!/bin/bash
+
+# Run valgrind on different test cases===
+valgrind --leak-check=full --track-origins=yes --show-reachable=yes ./push_swap "1 2 3 4" 
+valgrind --leak-check=full --track-origins=yes --show-reachable=yes ./push_swap "5 4 3 2 1"
+valgrind --leak-check=full --track-origins=yes --show-reachable=yes ./push_swap "100 50 30 20 10"
+
+
 ./checker_linux 0 9 1 8 2 7 3 6 4 5
 sa
 pb

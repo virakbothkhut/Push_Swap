@@ -1,5 +1,5 @@
 NAME = push_swap
-CC = gcc
+CC = cc
 CFLAGS = -Wall -Wextra -Werror
 LIBFT = ./libft/libft.a
 INCLUDE = -I./include
@@ -56,7 +56,7 @@ clean:
 fclean: clean
 	@$(MAKE) fclean -C ./libft
 	@rm -f $(NAME)
-	@echo "$(BLUE) $(BOLD)$(NAME) $(RESET) Cleaned ✅"
+	@echo "$(BLUE) $(BOLD)$(NAME) $(RESET) Clean is finished ✅ "
 
 
 re: fclean all

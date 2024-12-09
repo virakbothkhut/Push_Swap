@@ -1,6 +1,6 @@
 CC = cc
 # Compiler flags
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -fPIC
 # Source files
 SRCS = $(wildcard *.c)
 # Object files
