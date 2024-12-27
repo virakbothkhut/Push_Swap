@@ -1,6 +1,7 @@
 ./push_swap abc def ghi
 ./push_swap 1 2 3 3
 ./push_swap 2147483648 1 2
+./push_swap 2147483647 -2147483648 1 2
 ./push_swap 1 2 3 4 5 x
 ./push_swap 1 2 3 4 5  ra   
 

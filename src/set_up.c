@@ -77,15 +77,15 @@ void	index_stack(t_stack *head, int l_size)
 	}
 }
 
-int	get_node_count(t_stack *head)
+int	get_node_count(t_stack *stack)
 {
 	int	count;
 
 	count = 0;
-	while (head)
+	while (stack)
 	{
 		count++;
-		head = head->next;
+		stack = stack->next;
 	}
 	return (count);
 }

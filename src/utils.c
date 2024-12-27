@@ -12,21 +12,6 @@
 
 #include "push_swap.h"
 
-void	free_stack(t_stack **head)
-{
-	t_stack	*current;
-
-	if (head == NULL)
-		return ;
-	while (*head)
-	{
-		current = *head;
-		*head = (*head)->next;
-		free(current);
-	}
-	*head = NULL;
-}
-
 void	free_split_string(char **split_string)
 {
 	int	i;
@@ -60,13 +45,15 @@ int	find_biggest(t_stack *head)
 	return (biggest);
 }
 
-int	find_smallest(t_stack *head)
+int	find_smallest(t_stack *stack)
 {
 	int		smallest;
 	t_stack	*current;
 
-	smallest = head->value;
-	current = head;
+	current = stack;
+	if (current == NULL)
+		return (-1);
+	smallest = current->value;
 	while (current)
 	{
 		if (current->value < smallest)
@@ -91,3 +78,29 @@ t_stack	*new_node(int value)
 	node->next = NULL;
 	return (node);
 }
+
+void	free_stack(t_stack **stack)
+{
+	t_stack	*temp;
+
+	if (stack == NULL || *stack == NULL)
+		return ;
+	while (*stack)
+	{
+		temp = *stack;
+		*stack = (*stack)->next;
+		free(temp);
+	}
+	*stack = NULL;
+}
+
+// void	print_stack(t_stack *stack, const char *name)
+// {
+// 	printf("%s: ", name);
+// 	while (stack)
+// 	{
+// 		printf("%d(%d) ", stack->value, stack->index);
+// 		stack = stack->next;
+// 	}
+// 	printf("\n");
+// }

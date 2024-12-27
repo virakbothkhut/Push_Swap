@@ -8,6 +8,7 @@ OBJ_DIR = ./obj
 
 SRC = $(SRC_DIR)/push_swap.c $(SRC_DIR)/input_checker.c $(SRC_DIR)/r_rotate.c \
       $(SRC_DIR)/set_up.c $(SRC_DIR)/stack.c $(SRC_DIR)/algorithm.c $(SRC_DIR)/utils.c \
+	  $(SRC_DIR)/sort_handler.c $(SRC_DIR)/input_handler.c  \
 
 OBJ = $(addprefix $(OBJ_DIR)/, $(notdir $(SRC:.c=.o)))
 
@@ -37,8 +38,8 @@ all: $(NAME)
 $(NAME): $(LIBFT) $(OBJ)
 	@echo "Compiled with $(MAGENTA)$(BLINK)$(BOLD)$(CFLAGS)$(RESET)"
 	@$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(LIBFT)
-	@echo "$(ORANGE)$(BOLD)🔥🔥🔥 Ready for a sexy build process! 🔥🔥🔥$(RESET)"
-	@echo "$(CYAN)$(BOLD)$(BLINK)😃😃😃 MERRY CHRISTMAS 🎁🎁🎁🎁🎁$(RESET)"
+	@echo "$(ORANGE)$(BOLD)🔥🔥🔥Hope this project is correct this time 🥹🥹🥹 🔥🔥🔥$(RESET)"
+	@echo "$(CYAN)$(BOLD)$(BLINK) HAPPY NEW YEAR 🎁🎁🎁🎁🎁$(RESET)"
 
 $(LIBFT):
 	@$(MAKE) -C ./libft

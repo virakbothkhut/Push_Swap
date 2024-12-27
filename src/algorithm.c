@@ -15,68 +15,47 @@
 void	radix_sort(t_stack **stack_a, t_stack **stack_b)
 {
 	int	max_bits;
-	int	i;
+	int	bit;
 
-	i = 0;
-	max_bits = get_max_bits(*stack_a);
-	while (i < max_bits)
+	assign_index(stack_a);
+	bit = 0;
+	max_bits = get_max_bits(stack_a);
+	while (bit < max_bits)
 	{
-		bucket_sort(stack_a, stack_b, i);
-		i++;
+		process_bit(stack_a, stack_b, bit);
+		push_back_a(stack_a, stack_b);
+		bit++;
 	}
 }
 
-int	get_max_bits(t_stack *stack)
+int	get_max_bits(t_stack **stack)
 {
-	int		max_value;
 	t_stack	*current;
-	int		bits;
+	int		max;
+	int		max_bits;
 
-	current = stack;
-	max_value = 0;
+	current = *stack;
+	max = current->index;
+	max_bits = 0;
 	while (current)
 	{
-		if (current->value > max_value)
-			max_value = current->value;
+		if (current->index > max)
+			max = current->index;
 		current = current->next;
 	}
-	bits = 0;
-	while ((max_value >> bits) != 0)
+	while ((max >> max_bits) != 0)
 	{
-		bits++;
+		max_bits++;
 	}
-	return (bits);
-}
-
-void	bucket_sort(t_stack **stack_a, t_stack **stack_b, int bit_position)
-{
-	int	volume;
-	int	i;
-
-	i = 0;
-	volume = get_node_count(*stack_a);
-	while (i < volume)
-	{
-		if (((*stack_a)->value >> bit_position) & 1)
-		{
-			rotate_a(stack_a);
-		}
-		else
-		{
-			push_b(stack_a, stack_b);
-		}
-		i++;
-	}
-	while (*stack_b)
-	{
-		push_a(stack_a, stack_b);
-	}
+	return (max_bits);
 }
 
 void	sort_three(t_stack **head)
 {
 	int	biggest;
 
+	if (*head == NULL || (*head)->next == NULL)
+		return ;
 	biggest = find_biggest(*head);
 	if ((*head)->value == biggest)
 	{
@@ -94,7 +73,7 @@ void	sort_three(t_stack **head)
 
 void	sort_five(t_stack **stack_a, t_stack **stack_b)
 {
-	int		volume;
+	int	volume;
 
 	volume = get_node_count(*stack_a);
 	while (volume > 3)
@@ -107,5 +86,7 @@ void	sort_five(t_stack **stack_a, t_stack **stack_b)
 	push_a(stack_a, stack_b);
 	push_a(stack_a, stack_b);
 	if ((*stack_a)->value > (*stack_a)->next->value)
+	{
 		swap_a(stack_a);
+	}
 }

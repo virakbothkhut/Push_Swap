@@ -12,67 +12,50 @@
 
 #include "push_swap.h"
 
-void	push_b(t_stack **stack_a, t_stack **stack_b)
-{
-	t_stack	*tmp;
-
-	if (*stack_a == NULL)
-		return ;
-	tmp = *stack_a;
-	*stack_a = (*stack_a)->next;
-	tmp->next = *stack_b;
-	*stack_b = tmp;
-	write(1, "pb\n", 3);
-}
-
-void	push_a(t_stack **stack_a, t_stack **stack_b)
+int	push_a(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack	*tmp;
 
 	if (*stack_b == NULL)
-		return ;
+		return (-1);
 	tmp = *stack_b;
-	*stack_b = (*stack_b)->next;
+	*stack_b = tmp->next;
 	tmp->next = *stack_a;
 	*stack_a = tmp;
 	write(1, "pa\n", 3);
+	return (0);
 }
 
-void	rotate_a(t_stack **stack_a)
+int	push_b(t_stack **stack_a, t_stack **stack_b)
+{
+	t_stack	*tmp;
+
+	if (*stack_a == NULL)
+		return (-1);
+	tmp = *stack_a;
+	*stack_a = tmp->next;
+	tmp->next = *stack_b;
+	*stack_b = tmp;
+	write(1, "pb\n", 3);
+	return (0);
+}
+
+int	rotate_a(t_stack **stack)
 {
 	t_stack	*first;
 	t_stack	*last;
 
-	if (*stack_a == NULL || (*stack_a)->next == NULL)
-		return ;
-	first = *stack_a;
-	last = *stack_a;
+	if (get_node_count(*stack) < 2)
+		return (-1);
+	first = *stack;
+	last = *stack;
 	while (last->next)
 		last = last->next;
-	*stack_a = first->next;
+	*stack = first->next;
 	first->next = NULL;
 	last->next = first;
 	write(1, "ra\n", 3);
-}
-
-void	reverse_rotate_a(t_stack **stack_a)
-{
-	t_stack	*tmp;
-	t_stack	*prev;
-
-	if (*stack_a == NULL || (*stack_a)->next == NULL)
-		return ;
-	prev = NULL;
-	tmp = *stack_a;
-	while (tmp->next != NULL)
-	{
-		prev = tmp;
-		tmp = tmp->next;
-	}
-	prev->next = NULL;
-	tmp->next = *stack_a;
-	*stack_a = tmp;
-	write(1, "rra\n", 4);
+	return (0);
 }
 
 void	swap_a(t_stack **stack_a)

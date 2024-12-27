@@ -49,23 +49,13 @@ int	is_valid_num(const char *str)
 
 void	input_checker(int ac, char **av)
 {
-	int		i;
-	char	**pointer;
-
-	i = 0;
 	if (ac == 2)
 	{
-		pointer = ft_split(av[1], ' ');
-		split_ac(av[1], pointer);
+		handle_single_ac(av[1]);
 	}
 	else
 	{
-		while (av[i +1])
-		{
-			if (!validate_ac(av[i + 1], av))
-				exit(1);
-			i++;
-		}
+		handle_multi_ac(ac, av);
 	}
 }
 
@@ -84,7 +74,6 @@ void	split_ac(char *ac, char **pointer)
 		}
 		i++;
 	}
-	free(pointer);
 }
 
 int	validate_ac(char *ac, char **pointer)
@@ -97,7 +86,7 @@ int	validate_ac(char *ac, char **pointer)
 		return (0);
 	}
 	num = ft_atoi(ac);
-	if (num == INT_MAX || num == INT_MIN)
+	if (num > INT_MAX || num < INT_MIN)
 	{
 		write(1, "Error\n", 6);
 		return (0);

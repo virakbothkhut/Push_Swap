@@ -14,43 +14,26 @@
 
 #include <limits.h>
 
-static	int	check_space(int c)
+long	ft_atoi(const char *str)
 {
-	if ((c >= 9 && c <= 13) || c == 32)
-		return (1);
-	return (0);
-}
+	long	result;
+	long	sign;
 
-static	int	check_digit(int c)
-{
-	if (c >= '0' && c <= '9')
-		return (1);
-	return (0);
-}
-
-int	ft_atoi(const char *str)
-{
-	long long int	n;
-	int				sign;
-
-	n = 0;
+	result = 0;
 	sign = 1;
-	while (*str && check_space(*str))
+	while (*str == ' ' || (*str >= 9 && *str <= 13))
 		str++;
 	if (*str == '-' || *str == '+')
 	{
 		if (*str == '-')
-			sign *= -1;
+		{
+			sign = -1;
+		}
 		str++;
 	}
-	while (*str && check_digit(*str))
+	while (*str >= '0' && *str <= '9')
 	{
-		n = n * 10 + sign * (*str - '0');
-		if (n > INT_MAX)
-			return (INT_MAX);
-		if (n < INT_MIN)
-			return (INT_MIN);
-		str++;
+		result = result * 10 + *str++ - '0';
 	}
-	return (n);
+	return (result * sign);
 }
