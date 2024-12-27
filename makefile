@@ -38,7 +38,7 @@ all: $(NAME)
 $(NAME): $(LIBFT) $(OBJ)
 	@echo "Compiled with $(MAGENTA)$(BLINK)$(BOLD)$(CFLAGS)$(RESET)"
 	@$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(LIBFT)
-	@echo "$(ORANGE)$(BOLD)🔥🔥🔥Hope this project is correct this time 🥹🥹🥹 🔥🔥🔥$(RESET)"
+	@echo "$(ORANGE)$(BOLD)🔥🔥🔥 ********** 🔥🔥🔥$(RESET)"
 	@echo "$(CYAN)$(BOLD)$(BLINK) HAPPY NEW YEAR 🎁🎁🎁🎁🎁$(RESET)"
 
 $(LIBFT):
