@@ -8,7 +8,7 @@ OBJ_DIR = ./obj
 
 SRC = $(SRC_DIR)/push_swap.c $(SRC_DIR)/input_checker.c $(SRC_DIR)/r_rotate.c \
       $(SRC_DIR)/set_up.c $(SRC_DIR)/stack.c $(SRC_DIR)/algorithm.c $(SRC_DIR)/utils.c \
-	  $(SRC_DIR)/sort_handler.c $(SRC_DIR)/input_handler.c  \
+	  $(SRC_DIR)/sort_handler.c $(SRC_DIR)/input_handler.c \
 
 OBJ = $(addprefix $(OBJ_DIR)/, $(notdir $(SRC:.c=.o)))
 
@@ -47,7 +47,7 @@ $(LIBFT):
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(OBJ_DIR)
 	@echo "$(YELLOW)$(BOLD)Compiled ✅ >>>>>>>>> $(CYAN)$(UNDER)$^$(RESET)"
-	@echo "$(MAGENTA)$(BLINK) LET's GO 🎅🎅🎄🎄🎄$(RESET)"
+	@echo "$(MAGENTA)$(BLINK) $(RESET)"
 	@$(CC) $(CFLAGS) $(INCLUDE) -c -o $@ $^
 
 clean:

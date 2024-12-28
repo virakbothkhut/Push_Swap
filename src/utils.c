@@ -12,19 +12,6 @@
 
 #include "push_swap.h"
 
-void	free_split_string(char **split_string)
-{
-	int	i;
-
-	i = 0;
-	while (split_string[i])
-	{
-		free(split_string[i]);
-		i++;
-	}
-	free(split_string);
-}
-
 int	find_biggest(t_stack *head)
 {
 	int		biggest;
@@ -93,14 +80,3 @@ void	free_stack(t_stack **stack)
 	}
 	*stack = NULL;
 }
-
-// void	print_stack(t_stack *stack, const char *name)
-// {
-// 	printf("%s: ", name);
-// 	while (stack)
-// 	{
-// 		printf("%d(%d) ", stack->value, stack->index);
-// 		stack = stack->next;
-// 	}
-// 	printf("\n");
-// }

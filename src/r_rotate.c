@@ -12,30 +12,6 @@
 
 #include "push_swap.h"
 
-void	reverse_rotate(t_stack **stack)
-{
-	t_stack	*temp;
-	t_stack	*tail;
-
-	if (!*stack || !(*stack)->next)
-		return ;
-	tail = *stack;
-	while (tail->next)
-		tail = tail->next;
-	temp = *stack;
-	while (temp->next != tail)
-		temp = temp->next;
-	temp->next = NULL;
-	tail->next = *stack;
-	*stack = tail;
-}
-
-void	r_rotate_a(t_stack **stack_a)
-{
-	reverse_rotate(stack_a);
-	write(1, "rra\n", 4);
-}
-
 void	r_or_rr(t_stack **stack_a, int volume)
 {
 	int	smallest;
@@ -76,7 +52,7 @@ int	cal_rotates(t_stack *stack, int smallest)
 	return (i);
 }
 
-void	reverse_rotate_a(t_stack **stack_a)
+void	r_rotate_a(t_stack **stack_a)
 {
 	t_stack	*tmp;
 	t_stack	*prev;

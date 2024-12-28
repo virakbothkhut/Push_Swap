@@ -52,31 +52,6 @@ void	add_to_stack(t_stack **stack, t_stack *new_node)
 	}
 }
 
-void	index_stack(t_stack *head, int l_size)
-{
-	t_stack	*pointer;
-	t_stack	*largest;
-
-	while (l_size-- > 0)
-	{
-		pointer = head;
-		largest = NULL;
-		while (pointer)
-		{
-			if (!pointer->index)
-			{
-				if (!largest || pointer->value > largest->value)
-				{
-					largest = pointer;
-				}
-			}
-			pointer = pointer->next;
-		}
-		if (largest)
-			largest->index = l_size;
-	}
-}
-
 int	get_node_count(t_stack *stack)
 {
 	int	count;
