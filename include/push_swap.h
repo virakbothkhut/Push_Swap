@@ -31,8 +31,9 @@ typedef struct s_stack
 void		input_checker(int ac, char **av);
 int			check_duplicate(char **av);
 int			is_valid_num(const char *str);
-void		split_ac(char *ac, char **pointer);
+void		check_ac(char **pointer);
 int			validate_ac(char *ac, char **pointer);
+int			count_words(const char *str, char delimiter);
 
 //input handler
 void		handle_single_ac(char *ac);
@@ -47,6 +48,8 @@ void		r_or_rr(t_stack **stack_a, int volume);
 //set up
 void		add_to_stack(t_stack **stack, t_stack *new_node);
 t_stack		*create_stack(int ac, char **av);
+t_stack		*create_stack_single(char *ac);
+t_stack		*create_stack_multi(int ac, char **av);
 int			get_node_count(t_stack *stack);
 int			is_sorted(t_stack *stack);
 

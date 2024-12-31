@@ -49,6 +49,8 @@ int	is_valid_num(const char *str)
 
 void	input_checker(int ac, char **av)
 {
+	if (ac < 2)
+		return ;
 	if (ac == 2)
 	{
 		handle_single_ac(av[1]);
@@ -59,20 +61,26 @@ void	input_checker(int ac, char **av)
 	}
 }
 
-void	split_ac(char *ac, char **pointer)
+void	check_ac(char **pointer)
 {
 	int	i;
+	int	valid;
 
 	i = 0;
-	(void)ac;
+	valid = 1;
 	while (pointer[i])
 	{
 		if (!validate_ac(pointer[i], pointer))
 		{
-			free(pointer);
+			free_pointer(pointer);
 			exit(1);
 		}
 		i++;
+	}
+	if (!valid)
+	{
+		free_pointer(pointer);
+		exit(1);
 	}
 }
 

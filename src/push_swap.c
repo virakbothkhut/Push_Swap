@@ -18,8 +18,6 @@ int	main(int ac, char **av)
 	t_stack	*stack_b;
 	int		volume;
 
-	if (ac < 2)
-		return (0);
 	input_checker(ac, av);
 	stack_a = create_stack(ac, av);
 	stack_b = NULL;

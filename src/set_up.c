@@ -15,20 +15,14 @@
 t_stack	*create_stack(int ac, char **av)
 {
 	t_stack	*stack;
-	t_stack	*node;
-	int		i;
 
-	stack = NULL;
-	i = 1;
-	while (i < ac)
+	if (ac == 2)
 	{
-		node = new_node(ft_atoi(av[i]));
-		if (!node)
-		{
-			return (NULL);
-		}
-		add_to_stack(&stack, node);
-		i++;
+		stack = create_stack_single(av[1]);
+	}
+	else
+	{
+		stack = create_stack_multi(ac, av);
 	}
 	return (stack);
 }
